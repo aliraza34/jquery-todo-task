@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Form</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 1024px;
+            height: auto;
+            margin:20px auto;
+        }
+        nav.multiTabs>a{
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            border-radius: 5px 5px 0 0;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+        }
+        nav.multiTabs>a.active{
+            background-color: #000;
+            color: #fff;
+        }
+        .tabContent{
+            max-width: 500px;
+            display: none;
+            /* display: block; */
+        }
+
+        .tabContent.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- tabs for the nav multiTabs -->
+        <nav class="multiTabs">
+            <a href="javascript:void(0)" data-triger="tabc1" class="active">First</a>
+            <a href="javascript:void(0)" data-triger="tabc2" >Second</a>
+            <a href="javascript:void(0)" data-triger="tabc3" >Third</a>
+        </nav>
+        <!------------ nav tabs end ----------------->
+
+        <!-- content for multiTabs -->
+        <div id="tabc1" class="tabContent">
+            <h3>1st pera</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus est praesentium 
+                amet earum quae dolore qui necessitatibus culpa itaque sequi, consequatur laudantium
+                 aliquam, nihil nostrum eum perferendis numquam deleniti. Laborum?
+            Provident veniam accusantium eum suscipit deserunt qui rem nulla nam nostrum quis magnam 
+            ipsa mollitia quam sed labore, omnis commodi atque temporibus sapiente ipsam? Provident 
+            expedita ex voluptate fugit eos?
+            Molestias impedit provident repellendus mollitia deserunt sit hic laborum, architecto, atque 
+            itaque illum ipsa ullam ex. Dolores tempore esse possimus. Pariatur eos alias assumenda quas
+             culpa aliquid tenetur repellendus quis?</p>
+        </div>
+        <div id="tabc2" class="tabContent">
+            <h3>2st pera</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus est praesentium 
+                amet earum quae dolore qui necessitatibus culpa itaque sequi, consequatur laudantium
+                 aliquam, nihil nostrum eum perferendis numquam deleniti. Laborum?
+            Provident veniam accusantium eum suscipit deserunt qui rem nulla nam nostrum quis magnam 
+            ipsa mollitia quam sed labore, omnis commodi atque temporibus sapiente ipsam? Provident 
+            expedita ex voluptate fugit eos?
+            Molestias impedit provident repellendus mollitia deserunt sit hic laborum, architecto, atque 
+            itaque illum ipsa ullam ex. Dolores tempore esse possimus. Pariatur eos alias assumenda quas
+             culpa aliquid tenetur repellendus quis?</p>
+        </div>
+        <div id="tabc3" class="tabContent">
+            <h3>3st pera</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus est praesentium 
+                amet earum quae dolore qui necessitatibus culpa itaque sequi, consequatur laudantium
+                 aliquam, nihil nostrum eum perferendis numquam deleniti. Laborum?
+            Provident veniam accusantium eum suscipit deserunt qui rem nulla nam nostrum quis magnam 
+            ipsa mollitia quam sed labore, omnis commodi atque temporibus sapiente ipsam? Provident 
+            expedita ex voluptate fugit eos?
+            Molestias impedit provident repellendus mollitia deserunt sit hic laborum, architecto, atque 
+            itaque illum ipsa ullam ex. Dolores tempore esse possimus. Pariatur eos alias assumenda quas
+             culpa aliquid tenetur repellendus quis?</p>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function () {
+          var activeshow=  $('nav.multiTabs').find('a.active').attr('data-triger');
+            $('div#'+activeshow+'').show();
+        });
+
+        $(document).on('click','nav.multiTabs>a',function(){
+          //  alert('res');
+          var tabID= $(this).attr('data-triger');
+          //alert(tabID);
+         $('div#'+tabID+'').show();
+         $(".tabContent:not(#"+tabID+")").hide();
+         $(this).addClass('active');
+         $(this).siblings('a').removeClass('active');
+
+
+        });
+    </script>
+</body>
+</html>
